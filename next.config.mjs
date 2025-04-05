@@ -1,22 +1,20 @@
 // @ts-check
 import withPWA from 'next-pwa';
 
-// Determine if we're using Turbopack
-const usingTurbopack = process.env.TURBOPACK === '1';
-
-// Create a simple configuration that works with Next.js
-const config = {
+// Create a simple base configuration
+const nextConfig = {
   reactStrictMode: true,
 };
 
-// Only apply PWA wrapper when not in development or when not using Turbopack
-const finalConfig = process.env.NODE_ENV === 'development' && usingTurbopack
-  ? config
-  : withPWA({
+// Only apply PWA in production to avoid conflicts with Turbopack
+const isProd = process.env.NODE_ENV === 'production';
+
+// Export the final configuration
+export default isProd 
+  ? withPWA({
       dest: 'public',
       register: true,
       skipWaiting: true,
-      disable: process.env.NODE_ENV === 'development'
-    })(config);
-
-export default finalConfig; 
+      disable: false
+    })(nextConfig) 
+  : nextConfig; 
