@@ -1,0 +1,23 @@
+{
+  "name": "Raj Kumar Panda Portfolio",
+  "short_name": "RKP Portfolio",
+  "description": "Senior Software Engineer with 6 years of experience in Frontend and Web Development",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#171717",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+} 
