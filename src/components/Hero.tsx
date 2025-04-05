@@ -1,10 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
+import { useState } from "react";
 
 export default function Hero() {
+  const [imageError, setImageError] = useState(false);
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
@@ -45,7 +49,7 @@ export default function Hero() {
 
           <div className="flex gap-4 justify-center md:justify-start">
             <a
-              href="https://www.linkedin.com/in/rajkumarpanda/"
+              href="https://www.linkedin.com/in/raj-kumar-panda-48b6a5141/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground hover:text-primary transition-colors"
@@ -54,7 +58,7 @@ export default function Hero() {
               <FaLinkedin size={24} />
             </a>
             <a
-              href="https://github.com/"
+              href="https://github.com/rkp1819"
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground hover:text-primary transition-colors"
@@ -79,10 +83,21 @@ export default function Hero() {
           className="flex justify-center"
         >
           <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary shadow-xl">
-            {/* Replace with actual profile image */}
-            <div className="w-full h-full bg-primary/20 flex items-center justify-center text-primary">
-              <span className="text-xl font-bold">Profile Image</span>
-            </div>
+            {!imageError ? (
+              <Image
+                src="/profile_image.png"
+                alt="Raj Kumar Panda"
+                width={320}
+                height={320}
+                className="w-full h-full object-cover"
+                onError={() => setImageError(true)}
+                priority
+              />
+            ) : (
+              <div className="w-full h-full bg-primary/20 flex items-center justify-center text-primary">
+                <span className="text-xl font-bold">RKP</span>
+              </div>
+            )}
           </div>
         </motion.div>
       </div>

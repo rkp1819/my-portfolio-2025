@@ -22,6 +22,7 @@ export default function Contact() {
   const [submitStatus, setSubmitStatus] = useState<null | "success" | "error">(
     null
   );
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -36,13 +37,24 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus(null);
+    setErrorMessage("");
 
-    // Simulating form submission - in a real app you would send this data to your backend
     try {
-      // Artificial delay to simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-      console.log("Form submitted:", formData);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message");
+      }
+
       setSubmitStatus("success");
       setFormData({
         name: "",
@@ -53,13 +65,16 @@ export default function Contact() {
     } catch (error) {
       console.error("Error submitting form:", error);
       setSubmitStatus("error");
+      setErrorMessage(
+        error instanceof Error ? error.message : "An unexpected error occurred"
+      );
     } finally {
       setIsSubmitting(false);
 
-      // Reset status after 3 seconds
+      // Reset status after 5 seconds
       setTimeout(() => {
         setSubmitStatus(null);
-      }, 3000);
+      }, 5000);
     }
   };
 
@@ -141,7 +156,7 @@ export default function Contact() {
                 <h4 className="text-sm font-semibold mb-3">Connect With Me</h4>
                 <div className="flex gap-4">
                   <a
-                    href="https://www.linkedin.com/in/rajkumarpanda/"
+                    href="https://www.linkedin.com/in/raj-kumar-panda-48b6a5141/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-secondary p-3 rounded-full text-foreground hover:text-primary hover:bg-secondary/70 transition-colors"
@@ -150,7 +165,7 @@ export default function Contact() {
                     <FaLinkedin size={20} />
                   </a>
                   <a
-                    href="https://github.com/"
+                    href="https://github.com/rkp1819"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-secondary p-3 rounded-full text-foreground hover:text-primary hover:bg-secondary/70 transition-colors"
@@ -263,7 +278,8 @@ export default function Contact() {
 
                   {submitStatus === "error" && (
                     <p className="text-red-600 text-center font-medium">
-                      There was an error sending your message. Please try again.
+                      {errorMessage ||
+                        "There was an error sending your message. Please try again."}
                     </p>
                   )}
                 </div>

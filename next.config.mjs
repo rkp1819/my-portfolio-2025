@@ -1,16 +1,15 @@
 // @ts-check
 import withPWA from 'next-pwa';
 
-/** @type {import('next').NextConfig} */
-const nextConfig = withPWA({
+// Create a simple configuration that works with Next.js and PWA
+const config = {
   reactStrictMode: true,
-  swcMinify: true,
-  pwa: {
-    dest: 'public',
-    register: true,
-    skipWaiting: true,
-    disable: process.env.NODE_ENV === 'development'
-  }
-});
+};
 
-export default nextConfig; 
+// Apply the PWA wrapper with its own separate configuration
+export default withPWA({
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === 'development'
+})(config); 

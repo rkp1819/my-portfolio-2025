@@ -150,7 +150,7 @@ export default function Projects() {
 
           <div className="text-center mt-12">
             <Link
-              href="https://github.com/"
+              href="https://github.com/rkp1819"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-primary text-primary-foreground px-6 py-3 rounded-md font-medium hover:bg-primary/90 transition-colors inline-flex items-center gap-2"

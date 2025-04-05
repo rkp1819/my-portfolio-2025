@@ -6,12 +6,12 @@ export default function Footer() {
 
   const socialLinks = [
     {
-      href: "https://www.linkedin.com/in/rajkumarpanda/",
+      href: "https://www.linkedin.com/in/raj-kumar-panda-48b6a5141/",
       icon: <FaLinkedin size={18} />,
       label: "LinkedIn",
     },
     {
-      href: "https://github.com/",
+      href: "https://github.com/rkp1819",
       icon: <FaGithub size={18} />,
       label: "GitHub",
     },
