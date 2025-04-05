@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [main]
 
+# Add permissions needed for artifacts
+permissions:
+  contents: read
+  actions: write
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -44,8 +49,9 @@ jobs:
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
 
+      # Downgrade to v2 which is more stable
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: build-output
           path: .next/
