@@ -1,4 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Raj Kumar Panda - Portfolio 2025
+
+A modern portfolio application built with Next.js, showcasing my professional experience, skills, and projects.
+
+## Features
+
+- **Progressive Web App (PWA)**: Works offline and can be installed on mobile devices
+- **Responsive Design**: Optimized for all screen sizes and devices
+- **Dark/Light Mode**: Automatically adapts to user's system preferences
+- **Modern UI**: Clean, professional interface with smooth animations
+- **Contact Form**: Integrated with Resend email service for direct communication
+
+## Tech Stack
+
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Next-PWA
+- Resend (Email)
+
+## Deployment
+
+This portfolio is deployed on Vercel with continuous integration and deployment through GitHub.
+
+## Contact
+
+Feel free to reach out to me at:
+
+- Email: rkp1819@gmail.com
+- LinkedIn: [https://www.linkedin.com/in/raj-kumar-panda-48b6a5141/](https://www.linkedin.com/in/raj-kumar-panda-48b6a5141/)
+- GitHub: [https://github.com/rkp1819](https://github.com/rkp1819)
 
 ## Getting Started
 
