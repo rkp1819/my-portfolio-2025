@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI Pipeline
 
 on:
   push:
@@ -9,7 +9,6 @@ on:
 # Add permissions needed for artifacts
 permissions:
   contents: read
-  actions: write
 
 jobs:
   lint:
@@ -48,20 +47,3 @@ jobs:
         run: npm run build
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-
-      # Downgrade to v2 which is more stable
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: build-output
-          path: .next/
-          retention-days: 7
-
-  # This job is only informational - actual deployment will be handled by Vercel
-  deploy-info:
-    runs-on: ubuntu-latest
-    needs: build
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    steps:
-      - name: Deployment Info
-        run: echo "Your code will be automatically deployed to Vercel when pushed to the main branch."
