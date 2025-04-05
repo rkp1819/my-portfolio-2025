@@ -6,7 +6,11 @@ const config = {
   reactStrictMode: true,
 };
 
+// Check if we're using Turbopack
+const usingTurbopack = process.env.TURBOPACK === '1';
+
 // Apply the PWA wrapper with its own separate configuration
+// Only if we're not using Turbopack in development
 export default withPWA({
   dest: 'public',
   register: true,
