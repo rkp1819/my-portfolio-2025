@@ -47,6 +47,9 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 @layer utilities {
@@ -57,10 +60,42 @@ body {
   .text-pretty {
     text-wrap: pretty;
   }
+
+  /* Mobile touch improvements */
+  @media (max-width: 767px) {
+    .touch-target {
+      min-height: 48px;
+      min-width: 48px;
+    }
+  }
+
+  /* Prevent text from becoming too small on mobile */
+  .text-responsive {
+    font-size: clamp(0.875rem, 4vw, 1rem);
+  }
+
+  /* Fluid spacing utility */
+  .space-fluid {
+    padding: clamp(1rem, 5vw, 2rem);
+  }
+
+  /* Prevent long words from breaking layout on small screens */
+  .break-words-mobile {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-word;
+  }
 }
 
 .section-padding {
-  padding: 5rem 1rem;
+  padding: 4rem 1rem;
+}
+
+@media (min-width: 640px) {
+  .section-padding {
+    padding: 5rem 1.5rem;
+  }
 }
 
 @media (min-width: 768px) {

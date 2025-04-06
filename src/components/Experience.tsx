@@ -55,18 +55,18 @@ export default function Experience() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 md:mb-8 text-center">
             Work <span className="text-primary">Experience</span>
           </h2>
 
-          <div className="space-y-8 relative">
+          <div className="space-y-6 md:space-y-8 relative">
             {/* Timeline line */}
-            <div className="absolute left-0 md:left-1/2 h-full w-1 bg-primary/20 transform md:-translate-x-1/2"></div>
+            <div className="absolute left-4 md:left-1/2 h-full w-1 bg-primary/20 transform md:-translate-x-1/2 hidden md:block"></div>
 
             {experiences.map((exp, index) => (
               <motion.div
                 key={index}
-                className={`relative grid md:grid-cols-2 gap-8 ${
+                className={`relative grid md:grid-cols-2 gap-4 md:gap-8 ${
                   index % 2 === 0 ? "md:pr-12" : "md:pl-12 md:flex-row-reverse"
                 }`}
                 initial={{ opacity: 0, y: 20 }}
@@ -75,7 +75,7 @@ export default function Experience() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-0 md:left-1/2 top-0 w-6 h-6 bg-primary rounded-full transform -translate-x-1/2 z-10 md:flex items-center justify-center hidden">
+                <div className="absolute left-4 md:left-1/2 top-0 w-6 h-6 bg-primary rounded-full transform md:-translate-x-1/2 z-10 md:flex items-center justify-center hidden">
                   <FaBriefcase className="text-white" />
                 </div>
 
@@ -84,23 +84,25 @@ export default function Experience() {
                     index % 2 !== 0
                       ? "md:col-start-2 md:col-end-3 row-start-1"
                       : "md:col-start-1 md:col-end-2 row-start-1"
-                  }`}
+                  } pb-2 md:pb-0`}
                 >
-                  <h3 className="text-xl font-bold">{exp.company}</h3>
-                  <h4 className="text-lg text-primary font-medium">
-                    {exp.position}
-                  </h4>
-                  <p className="text-sm opacity-80 my-1">{exp.period}</p>
+                  <h3 className="text-lg md:text-xl font-bold">
+                    {exp.company}
+                  </h3>
+                  <h4 className="text-primary font-medium">{exp.position}</h4>
+                  <p className="text-xs md:text-sm opacity-80 mt-1">
+                    {exp.period}
+                  </p>
                 </div>
 
                 <div
-                  className={`bg-white dark:bg-secondary/50 p-5 rounded-lg shadow-md ${
+                  className={`bg-white dark:bg-secondary/50 p-4 md:p-5 rounded-lg shadow-md ${
                     index % 2 === 0
                       ? "md:col-start-2 md:col-end-3 row-start-1"
                       : "md:col-start-1 md:col-end-2 row-start-1"
                   }`}
                 >
-                  <ul className="space-y-2 list-disc pl-4">
+                  <ul className="space-y-2 list-disc pl-4 text-sm md:text-base">
                     {exp.description.map((item, i) => (
                       <li key={i} className="text-pretty">
                         {item}

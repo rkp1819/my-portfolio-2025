@@ -43,8 +43,8 @@ export default function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="font-bold text-xl">
+      <div className="container mx-auto px-4 py-3 md:py-4 flex justify-between items-center">
+        <Link href="/" className="font-bold text-lg md:text-xl">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -75,11 +75,12 @@ export default function Header() {
 
         {/* Mobile Navigation Toggle */}
         <button
-          className="md:hidden text-foreground"
+          className="md:hidden text-foreground touch-target p-2"
           onClick={toggleMenu}
           aria-label="Toggle menu"
+          aria-expanded={isOpen}
         >
-          {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
         </button>
       </div>
 
@@ -92,12 +93,12 @@ export default function Header() {
           transition={{ duration: 0.3 }}
           className="md:hidden bg-background/95 backdrop-blur-md shadow-md"
         >
-          <nav className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+          <nav className="container mx-auto px-4 py-2 flex flex-col">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-foreground hover:text-primary transition-colors py-2"
+                className="text-foreground hover:text-primary transition-colors py-3 text-center touch-target break-words-mobile"
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}

@@ -79,11 +79,11 @@ export default function Projects() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 md:mb-8 text-center">
             My <span className="text-primary">Projects</span>
           </h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
@@ -93,25 +93,27 @@ export default function Projects() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-background rounded-lg overflow-hidden shadow-md flex flex-col h-full"
               >
-                <div className="relative h-48 w-full bg-secondary/50">
+                <div className="relative h-36 sm:h-40 md:h-48 w-full bg-secondary/50">
                   {/* Project image placeholder - would be replaced with actual images */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-primary/10 text-primary font-medium">
+                  <div className="absolute inset-0 flex items-center justify-center bg-primary/10 text-primary font-medium text-sm md:text-base">
                     {project.title} Screenshot
                   </div>
                 </div>
 
-                <div className="p-5 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                <div className="p-3 md:p-5 flex flex-col flex-grow">
+                  <h3 className="text-base md:text-lg lg:text-xl font-bold mb-2">
+                    {project.title}
+                  </h3>
 
-                  <p className="text-foreground/80 mb-4 flex-grow text-pretty">
+                  <p className="text-foreground/80 mb-3 md:mb-4 flex-grow text-pretty text-xs md:text-base">
                     {project.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-1 md:gap-2 mb-3 md:mb-4">
                     {project.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-2 py-1 text-xs font-medium bg-secondary rounded-full"
+                        className="px-1.5 py-0.5 text-xs font-medium bg-secondary rounded-full"
                       >
                         {tech}
                       </span>
@@ -127,7 +129,7 @@ export default function Projects() {
                         className="text-foreground hover:text-primary transition-colors"
                         aria-label={`${project.title} GitHub repository`}
                       >
-                        <FaGithub size={20} />
+                        <FaGithub size={18} className="md:text-xl" />
                       </a>
                     )}
 
@@ -139,7 +141,7 @@ export default function Projects() {
                         className="text-foreground hover:text-primary transition-colors"
                         aria-label={`${project.title} live demo`}
                       >
-                        <FaExternalLinkAlt size={18} />
+                        <FaExternalLinkAlt size={16} className="md:text-lg" />
                       </a>
                     )}
                   </div>
@@ -148,14 +150,14 @@ export default function Projects() {
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-8 md:mt-12">
             <Link
               href="https://github.com/rkp1819"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-primary text-primary-foreground px-6 py-3 rounded-md font-medium hover:bg-primary/90 transition-colors inline-flex items-center gap-2"
+              className="bg-primary text-primary-foreground px-4 md:px-6 py-2 md:py-3 rounded-md font-medium hover:bg-primary/90 transition-colors inline-flex items-center gap-2 text-sm md:text-base"
             >
-              <FaGithub size={20} />
+              <FaGithub size={18} />
               See More Projects
             </Link>
           </div>
