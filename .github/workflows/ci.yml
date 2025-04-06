@@ -46,4 +46,4 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.resend_api_key }}
